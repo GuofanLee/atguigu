@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX-服务端响应JSON数据</title>
+</head>
+<body>
+
+<button>获取JSON数据</button>
+
+<script>
+    //获取button元素
+    const btn = document.getElementsByTagName('button')[0];
+    //绑定点击事件，发送Ajax请求
+    btn.onclick = function () {
+        //1、创建XMLHttpRequest对象
+        const xhr = new XMLHttpRequest();
+        //2、指明响应数据类型为Json
+        xhr.responseType = 'json';
+        //3、初始化：设置请求方式和url
+        xhr.open('GET', 'http://127.0.0.1:8000/json-server');
+        //4、发送请求
+        xhr.send();
+        //5、事件绑定，响应回调
+        //on=when：当...的时候
+        //readystate是xhr对象中的属性，表示状态：0-未初始化；1-open方法调用完毕；2-send方法调用完毕；3-服务端返回部分结果；4-服务端返回所有结果
+        //readystate的值一共会改变4次，0-1一次，1-2一次，2-3一次，3-4一次，因此，onreadystatechange事件也会被触发4次
+        xhr.onreadystatechange = function () {
+            //5、判断服务器是否返回所有结果，以及响应状态码是否为2xx
+            if (xhr.readyState === 4 && xhr.status >= 200 && xhr.status < 300) {
+                //6、处理响应结果
+                console.log(xhr.getResponseHeader('content-type'));//获取响应头参数：content-type
+                console.log(xhr.response);//获取响应体
+                console.log(xhr.response.name);
+            }
+        }
+    }
+</script>
+
+</body>
+</html>

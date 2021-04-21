@@ -22,6 +22,26 @@ app.all('/server', (request, response) => {
     response.send('Hello Ajax POST');
 });
 
+//响应Json数据
+app.get('/json-server', (request, response) => {
+    //设置响应头，允许跨域
+    response.setHeader('Access-Control-Allow-Origin', '*');
+    //设置响应
+    const data = {
+        name: 'guofanlee'
+    };
+    //响应数据只能是字符串或Buffer，json对象会转为字符串
+    response.send(data);
+});
+
+//测试IE缓存
+app.get('/ie', (request, response) => {
+    //设置响应头，允许跨域
+    response.setHeader('Access-Control-Allow-Origin', '*');
+    //设置响应
+    response.send('Hello IE');
+});
+
 //5、监听端口&启动服务
 app.listen(8000, () => {
     console.log('服务已经启动，8000端口监听中......');
