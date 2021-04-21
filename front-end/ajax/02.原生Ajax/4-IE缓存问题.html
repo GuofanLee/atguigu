@@ -14,6 +14,7 @@
     //绑定点击事件，发送Ajax请求
     btn.onclick = function () {
         const xhr = new XMLHttpRequest();
+        //添加时间戳参数，解决IE缓存问题
         xhr.open('GET', 'http://127.0.0.1:8000/ie?time=' + new Date().getTime());
         xhr.send();
         xhr.onreadystatechange = function () {

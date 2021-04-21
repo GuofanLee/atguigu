@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>超时与网络异常</title>
+</head>
+<body>
+
+<button>点击发送请求</button>
+
+<script>
+    //获取button元素
+    const btn = document.getElementsByTagName('button')[0];
+    //绑定点击事件，发送Ajax请求
+    btn.onclick = function () {
+        const xhr = new XMLHttpRequest();
+        //设置超时时间：2s，2s后请求取消
+        xhr.timeout = 2000;
+        //设置超时回调（可选，如果不设置，则超时自动取消请求，不会回调）
+        xhr.ontimeout = function () {
+            alert('请求超时，请稍后重试！');
+        }
+        //设置网络异常回调（可选，如果不设置，则发生异常不会回调）
+        xhr.onerror = function () {
+            alert('网络异常，请稍后重试！');
+        }
+        xhr.open('GET', 'http://127.0.0.1:8000/timeout');
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status >= 200 && xhr.status < 300) {
+                console.log(xhr.response);
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
