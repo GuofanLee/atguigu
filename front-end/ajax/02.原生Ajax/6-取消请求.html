@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>取消请求</title>
+</head>
+<body>
+
+<button>发送请求</button>
+<button>取消请求</button>
+
+<script>
+    //获取“发送请求”按钮
+    const sendBtn = document.getElementsByTagName('button')[0];
+    //获取“取消请求”按钮
+    const cancelBtn = document.getElementsByTagName('button')[1];
+    //通过调用XMLHttpRequest的abort()方法来取消请求
+    let xhr = null;
+    //绑定点击事件，发送Ajax请求
+    sendBtn.onclick = function () {
+        xhr = new XMLHttpRequest();
+        xhr.open('GET', 'http://127.0.0.1:8000/timeout');
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status >= 200 && xhr.status < 300) {
+                console.log(xhr.response);
+            }
+        }
+    }
+    //绑定点击时间，取消Ajax请求
+    cancelBtn.onclick = function () {
+        xhr.abort();
+    }
+</script>
+
+</body>
+</html>
