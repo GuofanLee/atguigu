@@ -55,27 +55,30 @@
   $('button').eq(2).click(function(){
     $.ajax({
       //url
-      url: 'http://127.0.0.1:8000/jquery-server',
+      url: 'http://127.0.0.1:8000/jquery-timeout',
       //参数
-      data: {a:100, b:200},
-      //请求类型
+      data: {
+          a: 100,
+          b: 200
+      },
+      //请求方式
       type: 'GET',
-      //响应体结果
+      //响应数据格式
       dataType: 'json',
-      //成功的回调
-      success: function(data){
-        console.log(data);
+      //成功回调
+      success: function(responseData){
+        console.log(responseData);
       },
       //超时时间
-      timeout: 2000,
-      //失败的回调
+      timeout: 3000,
+      //失败回调
       error: function(){
         console.log('出错啦!!');
       },
       //头信息
       headers: {
-        c:300,
-        d:400
+        c: 300,
+        d: 400
       }
     });
   });
