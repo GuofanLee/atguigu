@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用fetch()函数发送Ajax请求</title>
+</head>
+<body>
+
+<button>使用fetch()函数发送Ajax请求</button>
+
+<script>
+
+  const btn = document.querySelector('button');
+
+  btn.onclick = function () {
+    fetch('http://127.0.0.1:8000/fetch-ajax?id=123', {
+        //请求方式
+        method: 'POST',
+        //请求头(可选)
+        headers: {
+            //自定义请求头
+            token: '123456789'
+        },
+        //请求体(参数)：可以是一个 Blob、BufferSource、FormData、URLParams 等
+        body: 'username=admin&password=admin'
+    }).then(response => {
+        // fetch()方法返回的是Promise
+        // return response.text();  //以字符串接收响应结果
+        return response.json();     //以Json对象接收响应结果
+    }).then(response => {
+        //打印响应结果
+        console.log(response);
+    })
+  };
+
+</script>
+
+</body>
+</html>
