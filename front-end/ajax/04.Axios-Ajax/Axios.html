@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Axios发送Ajax请求</title>
+    <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+
+<button>GET请求</button>
+<button>POST请求</button>
+<button>通用AJAX请求</button>
+
+<script>
+  const btns = document.querySelectorAll('button');
+
+  //配置baseURL
+  axios.defaults.baseURL = 'http://127.0.0.1:8000';
+
+  //Axios发送Get请求
+  btns[0].onclick = function () {
+    axios.get(
+        //请求url，因为配置了baseURL，这里可以不用写协议和域名
+        '/axios-server',
+        {
+            //url参数(可选)
+            params: {
+                name: 'Tom',
+                age: 18
+            },
+            //自定义请求头(可选)
+            headers: {
+                token: '123456789'
+            }
+        }
+    ).then(response => {
+        //响应结果
+        console.log(response.data);
+    });
+  };
+
+  //Axios发送POST请求
+  btns[1].onclick = function () {
+      axios.post(
+          //请求url，因为配置了baseURL，这里可以不用写协议和域名
+          '/axios-server',
+          //请求体(参数)，如果没有请求体(参数)，也要写个空{}，因为axios.post()的第二个参数默认就是请求体(参数)
+          {
+              id: 123,
+              password: 456
+          },
+          {
+              //url参数(可选)
+              params: {
+                  name: 'Tom',
+                  age: 18
+              },
+              //自定义请求头(可选)
+              headers: {
+                  token: '123456789'
+              }
+          }
+      ).then(response => {
+          //响应结果
+          console.log(response.data);
+      })
+  };
+
+  //Axios通用Ajax请求
+  btns[2].onclick = function () {
+      axios({
+          //请求方式
+          method: 'POST',
+          //请求url
+          url: '/axios-server',
+          //url参数(可选)
+          params: {
+              name: 'Tom',
+              age: 18
+          },
+          //自定义请求头(可选)
+          headers: {
+              token: '123456789'
+          },
+          //请求体参数
+          data: {
+              id: 123,
+              password: 456
+          }
+      }).then(response => {
+          //响应结果
+          console.log(response.data);
+      })
+  }
+
+</script>
+
+</body>
+</html>
