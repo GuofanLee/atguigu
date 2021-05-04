@@ -18,7 +18,7 @@
 <script>
   $('button').eq(0).click(function() {
     $.get(
-        //请求url
+        //请求url，url如果不写协议、域名和端口，则默认与当前页面同源
         'http://127.0.0.1:8000/jquery-server',
         //请求数据
         {
@@ -36,7 +36,7 @@
 
   $('button').eq(1).click(function() {
     $.post(
-        //请求url
+        //请求url，url如果不写协议、域名和端口，则默认与当前页面同源
         'http://127.0.0.1:8000/jquery-server',
         //请求数据
         {
@@ -54,7 +54,7 @@
 
   $('button').eq(2).click(function(){
     $.ajax({
-      //url
+      //请求url，url如果不写协议、域名和端口，则默认与当前页面同源
       url: 'http://127.0.0.1:8000/jquery-timeout',
       //参数
       data: {

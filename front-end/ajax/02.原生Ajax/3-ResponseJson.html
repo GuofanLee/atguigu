@@ -17,7 +17,7 @@
         const xhr = new XMLHttpRequest();
         //2、指明响应数据类型为Json
         xhr.responseType = 'json';
-        //3、初始化：设置请求方式和url
+        //3、初始化：设置请求方式和url，url如果不写协议、域名和端口，则默认与当前页面同源
         xhr.open('GET', 'http://127.0.0.1:8000/json-server');
         //4、发送请求
         xhr.send();

@@ -20,7 +20,7 @@
   //Axios发送Get请求
   btns[0].onclick = function () {
     axios.get(
-        //请求url，因为配置了baseURL，这里可以不用写协议和域名
+        //请求url，因为配置了baseURL，这里可以不用写协议和域名和端口，如果不配置baseURL且不写协议、域名和端口，则默认与当前页面同源
         '/axios-server',
         {
             //url参数(可选)
@@ -43,7 +43,7 @@
   //Axios发送POST请求
   btns[1].onclick = function () {
       axios.post(
-          //请求url，因为配置了baseURL，这里可以不用写协议和域名
+          //请求url，因为配置了baseURL，这里可以不用写协议和域名，如果不配置baseURL且不写协议、域名和端口，则默认与当前页面同源
           '/axios-server',
           //请求体(参数)，如果没有请求体(参数)，也要写个空{}，因为axios.post()的第二个参数默认就是请求体(参数)
           {
@@ -73,7 +73,7 @@
       axios({
           //请求方式
           method: 'POST',
-          //请求url
+          //请求url，因为配置了baseURL，这里可以不用写协议和域名，如果不配置baseURL且不写协议、域名和端口，则默认与当前页面同源
           url: '/axios-server',
           //url参数(可选)
           params: {

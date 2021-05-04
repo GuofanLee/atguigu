@@ -13,6 +13,7 @@
   const btn = document.querySelector('button');
 
   btn.onclick = function () {
+    //url如果不写协议、域名和端口，则默认与当前页面同源
     fetch('http://127.0.0.1:8000/fetch-ajax?id=123', {
         //请求方式
         method: 'POST',

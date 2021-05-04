@@ -15,7 +15,7 @@
         btn.onclick = function () {
             //1、创建XMLHttpRequest对象
             const xhr = new XMLHttpRequest();
-            //2、初始化：设置请求方式和url
+            //2、初始化：设置请求方式和url，url如果不写协议、域名和端口，则默认与当前页面同源
             xhr.open('GET', 'http://127.0.0.1:8000/server');
             //3、发送请求
             xhr.send();
