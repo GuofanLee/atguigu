@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON原理-1</title>
+    <style>
+        #result {
+            width: 300px;
+            height: 100px;
+            border: solid 1px darkred;
+        }
+    </style>
+</head>
+<body>
+
+    <script>
+        /**
+         * 定义一个方法，用来处理数据（模拟处理响应数据）
+         */
+        function handle(data) {
+            document.getElementById('result').innerHTML = JSON.stringify(data);
+        }
+    </script>
+
+    <div id="result"></div>
+
+    <script src="index.js"></script>
+
+</body>
+</html>
