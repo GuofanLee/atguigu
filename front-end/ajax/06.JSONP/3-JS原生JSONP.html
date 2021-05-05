@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS原生JSONP</title>
+    <style>
+        #result {
+            width: 300px;
+            height: 100px;
+            border: solid 1px darkred;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="result"></div>
+    <button id="btn">获取结果</button>
+
+    <script>
+        //定义用来处理响应数据的方法
+        function handle(data) {
+            document.getElementById('result').innerHTML = JSON.stringify(data);
+        }
+        //为按钮绑定点击事件
+        const btn = document.getElementById('btn');
+        btn.onclick = function () {
+            //1、创建一个<script>标签
+            const script = document.createElement('script');
+            //2、设置<script>标签的src属性
+            script.src = 'http://127.0.0.1:8000/getResult';
+            //3、将<script>标签插入到当前Html文档中，如果不插入，则无法通过<script>标签发送请求
+            document.body.appendChild(script);
+        }
+    </script>
+
+</body>
+</html>

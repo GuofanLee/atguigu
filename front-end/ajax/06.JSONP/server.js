@@ -11,6 +11,13 @@ app.all('/jsonp-server', (request, response) => {
     response.send(`handle(${JSON.stringify(data)})`);
 });
 
+//JS原生JSONP
+app.all('/getResult', (request, response) => {
+    const data = {name: '尚硅谷', age: 18};
+    //响应结果是对一个JS方法调用，并传入参数，这个参数就是要返回给前端的数据
+    response.send(`handle(${JSON.stringify(data)})`);
+});
+
 //5、监听端口&启动服务
 app.listen(8000, () => {
     console.log('服务已经启动，8000端口监听中......');
