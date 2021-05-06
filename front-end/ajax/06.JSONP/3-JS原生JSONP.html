@@ -27,7 +27,7 @@
             //1、创建一个<script>标签
             const script = document.createElement('script');
             //2、设置<script>标签的src属性
-            script.src = 'http://127.0.0.1:8000/getResult';
+            script.src = 'http://127.0.0.1:8000/getResult?callback=handle';
             //3、将<script>标签插入到当前Html文档中，如果不插入，则无法通过<script>标签发送请求
             document.body.appendChild(script);
         }
