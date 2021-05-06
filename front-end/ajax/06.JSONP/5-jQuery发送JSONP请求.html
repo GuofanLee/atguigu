@@ -15,15 +15,31 @@
 <body>
 
 <div id="result"></div>
-<button id="btn">获取结果</button>
+<button id="btn1">方式一</button>
+<button id="btn2">方式二</button>
 
 <script>
-    //为按钮绑定点击事件
-    $('#btn').click(function () {
+    //jQuery发送JSONP请求方式一
+    $('#btn1').click(function () {
         $.getJSON('http://127.0.0.1:8000/getResult?callback=?', function (data) {
             $('#result').html(JSON.stringify(data));
         })
     });
+
+    //jQuery发送JSONP请求方式二
+    $('#btn2').click(function () {
+        $.ajax({
+            url: "http://127.0.0.1:8000/getResult",
+            type: "GET",
+            dataType: "jsonp",
+            jsonp: "callback",          //自定义回调参数名（可选）
+            jsonpCallback: "showData",  //自定义回调方法名（可选）
+            success: function (data) {
+                $('#result').html(JSON.stringify(data));
+            }
+        });
+    });
+
 </script>
 
 </body>
