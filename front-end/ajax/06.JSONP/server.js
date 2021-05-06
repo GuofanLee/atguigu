@@ -11,7 +11,7 @@ app.all('/jsonp-server', (request, response) => {
     response.send(`handle(${JSON.stringify(data)})`);
 });
 
-//JS原生JSONP
+//JSONP
 app.all('/getResult', (request, response) => {
     //获取响应回调方法名称
     let callbackFunctionName = request.query.callback;
