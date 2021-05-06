@@ -22,7 +22,7 @@
   //为按钮绑定点击事件
   const btn = document.getElementById('btn');
   btn.onclick = function () {
-    fetchJsonp('http://127.0.0.1:8086/getResult', {
+    fetchJsonp('http://127.0.0.1:8000/getResult', {
         jsonpCallbackFunction: 'handle'
     }).then(function (response) {
       return response.json();
