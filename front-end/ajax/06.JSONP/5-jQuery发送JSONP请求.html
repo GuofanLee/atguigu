@@ -17,6 +17,7 @@
 <div id="result"></div>
 <button id="btn1">方式一</button>
 <button id="btn2">方式二</button>
+<button id="btn3">方式三</button>
 
 <script>
     //jQuery发送JSONP请求方式一
@@ -32,6 +33,20 @@
             url: "http://127.0.0.1:8000/getResult",
             type: "GET",
             dataType: "jsonp",
+            jsonp: "callback",          //自定义回调参数名（可选）
+            jsonpCallback: "showData",  //自定义回调方法名（可选）
+            success: function (data) {
+                $('#result').html(JSON.stringify(data));
+            }
+        });
+    });
+
+    //jQuery发送JSONP请求方式三
+    $('#btn3').click(function () {
+        $.ajax({
+            url: "http://127.0.0.1:8000/getResult?callback=?",
+            type: "GET",
+            dataType: "json",
             jsonp: "callback",          //自定义回调参数名（可选）
             jsonpCallback: "showData",  //自定义回调方法名（可选）
             success: function (data) {
